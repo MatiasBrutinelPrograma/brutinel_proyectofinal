@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../context/CartContext';
-import { firestore } from '../firebase';
+import { CartContext } from './CartContext';
+import { firestore } from './main';
 
 const Checkout = () => {
     const [name, setName] = useState('');
