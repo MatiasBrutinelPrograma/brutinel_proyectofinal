@@ -4,6 +4,7 @@ import { CartProvider } from './CartContext';
 import NavBar from './NavBar';
 import ItemListContainer from './ItemListContainer';
 import ItemDetailContainer from './ItemDetailContainer';
+import Categories from './Categories';
 import Cart from './Cart';
 import Checkout from './Checkout';
 import Contact from './Contact'; 
