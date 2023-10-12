@@ -34,9 +34,10 @@ const Checkout = () => {
 
     return (
         <div>
-            {/* Aquí puedes agregar campos de entrada para recoger la información del comprador */}
-            {/* También puedes agregar una lista de los productos en el carrito */}
-            {/* Asegúrate de validar la información antes de llamar a handleCheckout */}
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre" />
+        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Apellido" />
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Teléfono" />
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
             <button onClick={handleCheckout}>Realizar compra</button>
         </div>
     );

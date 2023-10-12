@@ -6,8 +6,9 @@ const NavBar = () => {
     return (
         <nav>
             <Link to="/">Inicio</Link>
+            <Link to="/categories">Categorias</Link>
             <Link to="/cart">Carrito</Link>
-            {/* Aquí puedes agregar más enlaces a diferentes categorías */}
+            <Link to="/contact">Contacto</Link>
             <CartWidget />
         </nav>
     );
