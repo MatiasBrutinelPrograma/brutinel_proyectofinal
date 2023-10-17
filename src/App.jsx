@@ -20,7 +20,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/contact" element={<Contact />} /> 
-          <Route path="/categories" element={<Categories />} /> 
+          <Route path="/categories/:id" element={<ItemListContainer />} /> 
         </Routes>
       </Router>
     </CartProvider>
