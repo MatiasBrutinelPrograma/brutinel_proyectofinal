@@ -11,9 +11,10 @@ const Categories = () => {
 
     useEffect(() => {
         const getCategories = async () => {
-            const categoriesCollection = collection(firestore, 'categories');
+            // Obtener las categorías desde Firebase
+            const categoriesCollection = collection(firestore, 'Tienda-de-muebles', '2QtjzZa559OBcCIWCKwR', 'Items');
             const categoriesSnapshot = await getDocs(categoriesCollection);
-            const categoriesList = categoriesSnapshot.docs.map(doc => doc.data().name);
+            const categoriesList = categoriesSnapshot.docs.map(doc => doc.data().Categoria);
             setCategories(categoriesList);
         };
 
@@ -22,17 +23,17 @@ const Categories = () => {
 
     useEffect(() => {
         const getItems = async () => {
-            const itemsCollection = collection(firestore, 'items');
-            const q = query(itemsCollection, where("category", "==", selectedCategory));
-            const itemsSnapshot = await getDocs(q);
-            const itemsList = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setItems(itemsList);
+            if (selectedCategory) {
+                // Obtener los productos filtrados por categoría desde Firebase
+                const itemsCollection = collection(firestore, 'Tienda-de-muebles', '2QtjzZa559OBcCIWCKwR', 'Items');
+                const q = query(itemsCollection, where("Categoria", "==", selectedCategory));
+                const itemsSnapshot = await getDocs(q);
+                const itemsList = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                setItems(itemsList);
+            }
             setLoading(false);
         };
-
-        if (selectedCategory) {
-            getItems();
-        }
+        getItems();
     }, [selectedCategory]);
 
     if (loading) {

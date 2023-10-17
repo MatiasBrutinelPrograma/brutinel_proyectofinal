@@ -2,22 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { firestore } from './main';
 import ItemList from './ItemList';
+import {db} from "./main";
+
 
 const ItemListContainer = () => {
     const [items, setItems] = useState([]);
+    const[titulo, setTitulo] = useState("Productos");
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const getItems = async () => {
-            const itemsCollection = collection(firestore, 'items');
-            const itemsSnapshot = await getDocs(itemsCollection);
-            const itemsList = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setItems(itemsList);
-            setLoading(false);
-        };
-
-        getItems();
-    }, []);
+    useEffect(() =>{
+        const itemsRef = collection(db, "items")
+        getDocs(itemsRef)
+            .then((resp) =>{
+                setItems(
+                    resp.docs.map((doc) => {
+                        return { ...doc.data(), id: doc.id}
+                    })
+                )
+            })
+    })
 
     if (loading) {
         return <div>Loading...</div>;
