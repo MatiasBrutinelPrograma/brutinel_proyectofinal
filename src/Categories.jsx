@@ -11,7 +11,7 @@ const Categories = () => {
 
     useEffect(() => {
         const getCategories = async () => {
-            // Obtener las categorías desde Firebase
+            // Obtener las categorías desde Firebasee
             const categoriesCollection = collection(firestore, 'Tienda-de-muebles', '2QtjzZa559OBcCIWCKwR', 'Items');
             const categoriesSnapshot = await getDocs(categoriesCollection);
             const categoriesList = categoriesSnapshot.docs.map(doc => doc.data().Categoria);
