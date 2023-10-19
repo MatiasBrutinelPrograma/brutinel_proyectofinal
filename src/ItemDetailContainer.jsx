@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc } from 'firebase/firestore';
 import { firestore } from './main';
 import ItemDetail from './ItemDetail';
 
@@ -8,14 +9,14 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const db = firestore.collection('items').doc(id);
-        db.get().then((doc) => {
-            if (!doc.exists) {
-                console.log('No such document!');
+        const itemRef = doc(firestore, 'items', id);
+        getDoc(itemRef).then((docSnapshot) => {
+            if (docSnapshot.exists()) {
+                setItem({ id: docSnapshot.id, ...docSnapshot.data() });
             } else {
-                setItem({ id: doc.id, ...doc.data() });
+                console.log('No such document!');
             }
-        });
+        }).catch((error) => console.log(error));
     }, [id]);
 
     return (
