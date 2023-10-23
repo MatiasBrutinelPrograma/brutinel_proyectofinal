@@ -67,3 +67,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+  button {
+    width: 100%;
+  }
+}

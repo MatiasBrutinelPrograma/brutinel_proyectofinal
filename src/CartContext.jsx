@@ -1,15 +1,27 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
-    // Aquí puedes agregar funciones para agregar y eliminar productos del carrito
+  // Función para agregar un producto al carrito
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
 
-    return (
-        <CartContext.Provider value={{ cart, setCart }}>
-            {children}
-        </CartContext.Provider>
-    );
+  // Función para eliminar un producto del carrito
+  const removeFromCart = (productId) => {
+    setCart(cart.filter((product) => product.id !== productId));
+  };
+
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
+
+export function useCart() {
+  return useContext(CartContext);
+}

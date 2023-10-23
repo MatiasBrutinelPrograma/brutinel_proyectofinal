@@ -26,7 +26,7 @@ const Categories = () => {
             if (selectedCategory) {
                 // Obtener los productos filtrados por categoría desde Firebase
                 const itemsCollection = collection(firestore, 'Tienda-de-muebles', '2QtjzZa559OBcCIWCKwR', 'Items');
-                const q = query(itemsCollection, where("Categoria", "==", selectedCategory));
+                const q = query(itemsCollection, where("category", "==", selectedCategory));
                 const itemsSnapshot = await getDocs(q);
                 const itemsList = itemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 setItems(itemsList);
