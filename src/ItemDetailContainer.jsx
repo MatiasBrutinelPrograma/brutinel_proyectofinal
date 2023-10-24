@@ -9,15 +9,12 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const itemRef = doc(firestore, 'items', id);
+        const itemRef = doc(firestore, 'Items', id);
         getDoc(itemRef)
             .then((docSnapshot) => {
                 if (docSnapshot.exists()) {
                     const itemData = docSnapshot.data();
-                    // Extrae los detalles del producto, por ejemplo: nombre, precio, descripción
-                    const { nombre, precio, descripcion } = itemData;
-                    // Luego, establece esos detalles en el estado local
-                    setItem({ id: docSnapshot.id, nombre, precio, descripcion });
+                    setItem({ id: docSnapshot.id, ...itemData });
                 } else {
                     console.log('No such document!');
                 }
