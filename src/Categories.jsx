@@ -3,6 +3,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { firestore } from './main';
 import Item from './Item';
 
+
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [items, setItems] = useState([]);
