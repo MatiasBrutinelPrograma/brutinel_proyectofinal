@@ -167,3 +167,22 @@ ul li img {
   margin: 0 auto; 
   max-height: 400px;
 }
+
+button {
+  border-radius: 8px;
+  border: none; 
+  padding: .6em .8em; 
+  font-size: .9em; 
+  font-weight: bold; 
+  background-color:#646cff; 
+  color:#fff; 
+}
+
+button:hover {
+   background-color:#535bf2; 
+}
+
+button:focus,
+button:focus-visible {
+   outline:none; 
+}
