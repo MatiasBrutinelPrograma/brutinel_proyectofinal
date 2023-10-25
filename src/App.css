@@ -116,8 +116,9 @@ nav a {
 }
 
 .cart-widget {
-  display: inline-block;
+  display: flex;
   margin-right: 20px;
+  float: right;
 }
 
 .cart-link {

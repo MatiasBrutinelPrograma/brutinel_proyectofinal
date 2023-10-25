@@ -9,6 +9,7 @@ const CartWidget = () => {
   return (
     <div className="cart-widget">
       <Link to="/cart" className="cart-link">
+        <i className="material-icons">shopping_cart</i>
         Carrito (<span className="cart-items">{totalItems}</span>)
       </Link>
     </div>
