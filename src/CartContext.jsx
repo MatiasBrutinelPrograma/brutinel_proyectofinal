@@ -7,7 +7,20 @@ export const CartProvider = ({ children }) => {
 
   // Función para agregar un producto al carrito
   const addToCart = (product) => {
-    setCart([...cart, product]);
+    // Comprueba si el producto ya está en el carrito
+    const existingProduct = cart.find((item) => item.id === product.id);
+
+    if (existingProduct) {
+      // Si el producto ya está en el carrito, incrementa su cantidad
+      setCart(
+        cart.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      // Si el producto no está en el carrito, añádelo con una cantidad de 1
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
   };
 
   // Función para eliminar un producto del carrito
@@ -25,4 +38,3 @@ export const CartProvider = ({ children }) => {
 export function useCart() {
   return useContext(CartContext);
 }
-

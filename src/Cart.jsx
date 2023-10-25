@@ -13,7 +13,7 @@ const Cart = () => {
         <div className="cart-container">
             {cart.map(item => (
                 <div key={item.id} className="cart-item">
-                    <img src={item.imgUrl} alt={item.Producto} className="cart-item-image" />
+                    <img src={item.url} alt={item.Producto} className="cart-item-image" />
                     <h2 className="cart-item-title">{item.Producto}</h2>
                     <p className="cart-item-price">Precio: ${item.Precio}</p>
                 </div>
