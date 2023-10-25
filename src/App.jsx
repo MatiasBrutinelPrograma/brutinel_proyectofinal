@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'; // Asegúrate de que este import esté correcto
+import './App.css'; 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CartProvider } from './CartContext'; 
 import NavBar from './NavBar';
