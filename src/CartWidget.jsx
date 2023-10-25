@@ -8,7 +8,7 @@ const CartWidget = () => {
 
     return (
         <div>
-            <Link to="/cart">Carrito ({totalItems})</Link>
+            <Link to="/Cart">Carrito ({totalItems})</Link>
         </div>
     );
 };

@@ -7,7 +7,7 @@ const Cart = () => {
     const totalPrice = cart.reduce((total, item) => total + item.Precio, 0);
 
     const clearCart = () => {
-        setCart([]);
+        setCart(cart.filter(item => typeof item.precio === 'number'));
     };
 
     return (
@@ -18,6 +18,7 @@ const Cart = () => {
                     <p>{item.Precio}</p>
                 </div>
             ))}
+            
             <p>Total: {totalPrice}</p>
             {cart.length > 0 && 
               <>
