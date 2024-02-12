@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
 import { firestore } from './main';
+import firebase from 'firebase/app'; // Asegúrate de importar firebase
 
 const Checkout = () => {
   const [name, setName] = useState('');
@@ -25,7 +26,7 @@ const Checkout = () => {
         email
       },
       items: cart,
-      date: firebase.firestore.Timestamp.fromDate(new Date()),
+      date: firebase.firestore.Timestamp.fromDate(new Date()), // Corregido
       status: 'generada'
     }).then((docRef) => {
       console.log('Order ID: ', docRef.id);
@@ -77,4 +78,3 @@ const Checkout = () => {
 };
 
 export default Checkout;
-
